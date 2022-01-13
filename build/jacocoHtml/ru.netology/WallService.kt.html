@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WallService.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Post_2</a> &gt; <a href="index.source.html" class="el_package">ru.netology</a> &gt; <span class="el_source">WallService.kt</span></div><h1>WallService.kt</h1><pre class="source lang-java linenums">package ru.netology
+
+<span class="nc" id="L3">class WallService {</span>
+
+<span class="nc" id="L5">    var posts = arrayOf&lt;Post?&gt;()</span>
+<span class="nc" id="L6">    var id: Int = 1</span>
+
+    fun add(post: Post) : Post {
+<span class="nc" id="L9">        post.id = id //Р·Р°РґР°РµРј СЌР»РµРјРµРЅС‚Сѓ СѓРЅРёРєР°Р»СЊРЅС‹Р№ id.</span>
+<span class="nc" id="L10">        id++ // СѓРІРµР»РёС‡РёРІР°РµРј id РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ СѓРЅРёРєР°Р»СЊРЅРѕСЃС‚Рё</span>
+<span class="nc" id="L11">        posts = posts.copyOf(posts.size + 1) // СЂР°СЃС€РёСЂСЏРµРј РјР°СЃСЃРёРІ РЅР° 1, РєРѕРїРёСЂСѓСЏ РІСЃРµ СЌР»РµРјРµРЅС‚С‹</span>
+<span class="nc" id="L12">        posts[posts.size - 1] = post //Р·Р°РїРѕР»РЅСЏРµРј РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°</span>
+<span class="nc" id="L13">        return post // РІРѕР·РІСЂР°С‰Р°РµРј РґРѕР±Р°РІР»РµРЅРЅС‹Р№ post СЃ РЅРѕРІС‹Рј id</span>
+    }
+
+    fun update(post: Post) : Boolean {
+        // РёС‰РµРј РїРѕСЃС‚, Сѓ РєРѕС‚РѕСЂРѕРіРѕ id СЃРѕРІРїР°РґР°РµС‚ СЃ С‚РµРј, С‡С‚Рѕ РјС‹ РїРѕРґР°РµРј РЅР° РІС…РѕРґ
+<span class="nc bnc" id="L18" title="All 10 branches missed.">        var postToEdit = posts.find { postFromArray -&gt; postFromArray?.id == post.id }</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (postToEdit == null) // РµСЃР»Рё РЅРµ РЅР°С€Р»Рё, РІС‹С…РѕРґРёРј РёР· С„СѓРЅРєС†РёРё СЃ СЂРµР·СѓР»СЊС‚Р°С‚РѕРј false</span>
+<span class="nc" id="L20">            return false</span>
+
+        // СЃСЋРґР° РёРґРµРј, С‚РѕР»СЊРєРѕ РµСЃР»Рё РЅР°С€Р»Рё РЅСѓР¶РЅС‹Р№ РїРѕСЃС‚, РЅРѕ Р±Р»РѕРє else РЅРµ РЅСѓР¶РµРЅ, РїРѕС‚РѕРјСѓ С‡С‚Рѕ РґРѕ СЌС‚РѕР№ С‚РѕС‡РєРё РєРѕРґ РІСЃРµ СЂР°РІРЅРѕ РґРѕР№РґРµС‚
+        // С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё СѓСЃР»РѕРІРёРµ РІС‹С€Рµ РЅРµ РІС‹РїРѕР»РЅРёС‚СЃСЏ
+
+        // РѕР±РЅРѕРІР»СЏРµРј РІСЃРµ РїРѕР»СЏ РєР»Р°СЃСЃР°
+<span class="nc" id="L26">        postToEdit.canDelete = post.canDelete</span>
+<span class="nc" id="L27">        postToEdit.canEdit = post.canEdit</span>
+        // TODO Р”Р»СЏ РІСЃРµ РѕСЃС‚Р°Р»СЊРЅС‹С… РїРѕР»РµР№, РєСЂРѕРјРµ id Рё date
+<span class="nc" id="L29">        return true // РІРѕР·РІСЂР°С‰Р°РµРј true</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
