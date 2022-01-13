@@ -44,7 +44,7 @@ class WallServiceTests {
         val result = wallService.add(postToAdd)
 
 
-        assertTrue(result.id == 0)
+        assertTrue(result.id != 0)
     }
 
     @Test
