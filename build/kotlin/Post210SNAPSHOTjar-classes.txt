@@ -1,1 +1,1 @@
-C:\Users\kosov\OneDrive\Desktop\Kotlin_study\build\classes\kotlin\main\ru\netology\Post.class;C:\Users\kosov\OneDrive\Desktop\Kotlin_study\build\classes\kotlin\main\ru\netology\WallService.class
+D:\Kotlin_study\build\classes\kotlin\main\ru\netology\Post.class;D:\Kotlin_study\build\classes\kotlin\main\ru\netology\WallService.class
